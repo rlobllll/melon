@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+
+body {
+    --title1:48px;
+    --title2:36px;
+    --title3:24px;
+    --title4:20px;
+    --content1 :18px;
+    --link:16px;
+    --nav:20px;
+
+    --colorTit1:#333;
+    --colorTit2:#333;
+    --colorTit3:#333;
+    --colorCont1:#333;
+
+}
+
+body, input, textarea {
+    font-family: 'Pretendard-Regular', '나눔고딕', '맑은 고딕', 'Malgun Gothic', 'Apple SD Gothic Neo', 돋움, Dotum, sans-serif; 
+}
+
+.centerbox1600 {max-width: 1600px; margin: 0 auto;}
+
+
+html {font-size: 20px; }
+
+
+
+/* 공통 */  /* vw, em */   
+/* 헤더 */
+.pc {display: block;}
+.mo {display: none;}
+
+body.on {height: 100%; overflow: hidden;}
+
+header {position: absolute; top: 0; left: 0;width: 100%;z-index: 20;}
+            /* ㄴ 화면 크기를 줄일때 반응형처럼 하려면 : 알고싶은크기 나누기 기존크기 곱하기 100 = 6.25 */
+            /* vw 보이는 윈도우 너비 전체 / vh 보이는 윈도우 높이 전체 */
+header .centerbox1600 {display: flex; justify-content: space-between; align-items: center; height: 100%;}
+                                        /* ㄴjustify-content: space-between 은 양끝에 붙여주는 거 
+                                        그래서 로고랑 메뉴가 양 끝으로 가짐*/
+header .centerbox1600 img {}
+header .centerbox1600 .gnb { display: flex; /* gap: 70px; */ }
+header .centerbox1600 .gnb li {font-size: 1rem; margin: 2em 0; white-space: nowrap;} 
+                                /* ㄴ 위에 html 지정한 폰트 사이즈 기준이 돼서 (20px), 여기서 2em = 40px 
+                                (폰트사이즈를 안줄경우 폰트 사이즈는 기본이 16px이라서 1em은 16px이 됨*/
+                                /* white-space: nowrap -> 화면 사이즈 줄였을 때 글자 깨짐 방지 */
+header .centerbox1600 .gnb li a {color: #fff; padding: 1em 1.85em;} 
+                                /* ㄴ 여기선 1em = 20px / 1rem 을 주면 20px됨*/
+
+
+/* 여기서부터 햄버거 메뉴 -> 나중에도 사용하기~~! */
+header .hambuger {position: absolute; width: 30px; height: 30px;top: 10px;right: 20px;z-index: 22;}
+header .hambuger span {position: absolute ; width: 20px;height: 2px; left: 5px; background: #fff; top: 14px;}
+header .hambuger span::before,
+header .hambuger span::after {content: ""; position: absolute; width: 100%; height: 100%; background: #fff;}
+header .hambuger span::before {top: -6px;}
+header .hambuger span::after {top: 6px; width: 10px;}
+
+header .hambuger.on span {background: rgba(0,0,0,0);}
+header .hambuger.on span:before {transform: rotate(45deg); background: #000; top: 0;}
+header .hambuger.on span:after {transform: rotate(135deg); background: #000; top: 0;width: 20px; transition: 0.3s; }
+/* 여기까지 모바일 햄버거버튼 */
+
+
+header .nav_box {position: absolute; width: 100%; height: 500px; background: rgba(255, 255, 255, 0.6);left: 0; top: 100%; backdrop-filter: blur(40px); display: none; }
+
+header .menu_box {height: 100%; display: flex; justify-content: center; align-items: flex-start; margin-top: 20px; }
+header .menu_box .menu {display: flex;}
+header .menu_box .menu > li {font-size: 24px; /* font-size: 1.2rem; */ font-weight: bold; position: relative;}
+header .menu_box .menu > li > a {color: #fff; display: block; padding: 30px 50px;} /*-> padding: 1.25em 2.5em */
+
+
+header .menu_box .menu > li .submenu {position: absolute; width: 100%;}
+header .menu_box .menu > li .submenu li {font-size: 20px;font-weight: normal; line-height: 3;text-align: center; border-radius: 2px; transition: 0.5s;}
+header .menu_box .menu > li .submenu li:hover {background: #00992e;}
+header .menu_box .menu > li .submenu li a {display: block; color: #fff;}
+
+
+/* 푸터 */
+footer {height: 100px;}
+
+
+
+/* subpage */
+#visual_sub {height: 710px; /* height:760px */ background: url(../images/melon_person11.jpg) center; background-size: cover; display: flex;justify-content: center; align-items: center;}
+#visual_sub .text {color: #fff; text-align: center;}
+#visual_sub .text strong {font-size: 48px; margin-bottom: 15px; display: block;}
+#visual_sub .text p {font-size: 16px;}
+
+/* #section_sub {padding-bottom: 100vh;} */
+
+.snb_box {max-width: 1320px; height: 4.75em; margin: 0 auto; background: rgba(255, 255 , 255, 0.5); transform: translateY(-100%); font-size: 20px; }
+.snb_box .snb {height: 100%; display: flex; justify-content: center; align-items: center;}
+.snb_box .snb li {height: 100%; }
+.snb_box .snb li a {color: #fff;  display: flex;height: 100%;font-size: 20px; padding: 0 2vw; align-items: center; white-space: nowrap;}
+.snb_box .snb li.active a span {border-bottom: 3px solid #00cd3c;;}
+
+
+.tabmenu {margin-bottom: 10vw;}
+.tabmenu ul {display: flex; justify-content: center; }
+.tabmenu ul li {font-size: 20px; }
+.tabmenu ul li a {color: #383838; padding: /*  20px 30px; */ 1vw 1.5vw; white-space: nowrap; display: flex; align-items: center;}
+.tabmenu ul li a span {/* border-bottom: #00cd3c 3px solid; */ }
+.tabmenu ul li.active /* a span */ {background: #00cd3c;} 
+
+
+.contents_box {padding-bottom: 4.6vw; /* 90px */}
+.contents_box .contents_box_text { margin-bottom: 4.1vw; }
+.contents_box .contents_box_text h2 {font-size: 36px;/* 80px */color: #00cd3c; text-align: center; margin-bottom: 1vw; /* text-transform: uppercase; -> 무조건 대문자 오게끔 하는거*/} 
+.contents_box .contents_box_text p {text-align: center;}
+.contents_box {max-width: 1045px; margin: 0 auto;}
+
+
+footer { height: 250px; width: 100%; background: #343434;}
+            /* ㄴ 화면 크기를 줄일때 반응형처럼 하려면 : 알고싶은크기 나누기 기존크기 곱하기 100 = 6.25 */
+            /* vw 보이는 윈도우 너비 전체 / vh 보이는 윈도우 높이 전체 */
+footer .centerbox1600 {display: flex; justify-content: space-between; align-items: center; height: 100%;}
+footer .centerbox1600 .f_logo {display: flex; justify-content: center; width: 1000px; height: 230px;  float: left; position: relative;}
+footer .centerbox1600 .f_logo .f_logo2 {position: absolute; left: 0;  height: 100px; }
+footer .centerbox1600 .f_logo h1 {float: left; height: 100px; display: flex; align-items: center;}
+footer .centerbox1600 .f_logo .f_logo2 p.name {float: left; height: 100px; display: block; color: #fff; line-height: 100px; margin-left: 50px;}
+footer .centerbox1600 .f_logo nav { float: left;}
+footer .centerbox1600 .f_logo nav .gnb { height: 100px; width: 400px;  margin-left: 50px;}
+footer .centerbox1600 .f_logo nav .gnb li {width: 200px; height: 100px; float: left; line-height: 100px; text-align: center;}
+footer .centerbox1600 .f_logo nav .gnb li a {color: #fff;}
+
+
+footer .centerbox1600 .f_logo .add {width: 100%; height: 70px; text-indent: 10px;}
+footer .centerbox1600 .f_logo .add p {float: left; display: block; width: 100%; height: 50px; line-height: 50px; margin-top: 10px; color: #fff;  }
+footer .centerbox1600 .f_logo .add em {float: right;display: block; width: 100%;height: 50px; color: #fff; }
+
